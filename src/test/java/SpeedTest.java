@@ -3,50 +3,63 @@ package test.java;
 import main.java.NumberProcessor;
 import org.junit.Test;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+import java.util.function.BiFunction;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-public class MathTest {
-
+public class SpeedTest {
     @Test
-    public void testMin() throws IOException {
+    public void testMinPerformance() throws IOException {
         String directoryPath = "testfiles/";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles((dir, name) -> name.endsWith(".txt"));
-        Map<String, Object[]> answers = readFileStatistics("testfiles/statistics.txt");
+        Map<String, Object[]> answers = MathTest.readFileStatistics("testfiles/statistics.txt");
+
         if (files != null) {
             for (File file : files) {
                 if (file.getName().equals("statistics.txt")) continue;
-                String filename = file.getAbsolutePath();
-                System.out.println("Cheking " + file.getName());
 
+                String filename = file.getAbsolutePath();
+                System.out.println("Checking speed of " + file.getName());
+
+                long startTime = System.nanoTime();
                 long actualMin = NumberProcessor.min(filename);
+                long endTime = System.nanoTime();
+                long duration = endTime - startTime;
+
+                System.out.println("Execution time for min function on " + file.getName() + ": " + duration + " nanoseconds");
+
                 long expectedMin = (long) answers.get(file.getName())[0];
                 assertEquals("Min in " + file.getName() + " must be " + expectedMin, expectedMin, actualMin);
             }
         }
     }
-
     @Test
-    public void testMax() throws IOException {
+    public void testMaxPerformance() throws IOException {
         String directoryPath = "testfiles/";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles((dir, name) -> name.endsWith(".txt"));
-        Map<String, Object[]> answers = readFileStatistics("testfiles/statistics.txt");
+        Map<String, Object[]> answers = MathTest.readFileStatistics("testfiles/statistics.txt");
         if (files != null) {
             for (File file : files) {
                 if (file.getName().equals("statistics.txt")) continue;
-                String filename = file.getAbsolutePath();
-                System.out.println("Cheking " + file.getName());
 
+                String filename = file.getAbsolutePath();
+                System.out.println("Checking speed of " + file.getName());
+
+                long startTime = System.nanoTime();
                 long actualMax = NumberProcessor.max(filename);
+                long endTime = System.nanoTime();
+                long duration = endTime - startTime;
+
+                System.out.println("Execution time for max function on " + file.getName() + ": " + duration + " nanoseconds");
+
                 long expectedMax = (long) answers.get(file.getName())[1];
                 assertEquals("Max in " + file.getName() + " must be " + expectedMax, expectedMax, actualMax);
             }
@@ -54,18 +67,26 @@ public class MathTest {
     }
 
     @Test
-    public void testSum() throws IOException {
+    public void testSumPerformance() throws IOException {
         String directoryPath = "testfiles/";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles((dir, name) -> name.endsWith(".txt"));
-        Map<String, Object[]> answers = readFileStatistics("testfiles/statistics.txt");
+        Map<String, Object[]> answers = MathTest.readFileStatistics("testfiles/statistics.txt");
+
         if (files != null) {
             for (File file : files) {
                 if (file.getName().equals("statistics.txt")) continue;
-                String filename = file.getAbsolutePath();
-                System.out.println("Cheking " + file.getName());
 
+                String filename = file.getAbsolutePath();
+                System.out.println("Checking speed of " + file.getName());
+
+                long startTime = System.nanoTime();
                 BigInteger actualSum = NumberProcessor.sum(filename);
+                long endTime = System.nanoTime();
+                long duration = endTime - startTime;
+
+                System.out.println("Execution time for sum function on " + file.getName() + ": " + duration + " nanoseconds");
+
                 BigInteger expectedSum = (BigInteger) answers.get(file.getName())[2];
                 assertEquals("Sum in " + file.getName() + " must be " + expectedSum, expectedSum, actualSum);
             }
@@ -73,47 +94,29 @@ public class MathTest {
     }
 
     @Test
-    public void testMult() throws IOException {
+    public void testMultPerformance() throws IOException {
         String directoryPath = "testfiles/";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles((dir, name) -> name.endsWith(".txt"));
-        Map<String, Object[]> answers = readFileStatistics("testfiles/statistics.txt");
+        Map<String, Object[]> answers = MathTest.readFileStatistics("testfiles/statistics.txt");
+
         if (files != null) {
             for (File file : files) {
                 if (file.getName().equals("statistics.txt")) continue;
-                String filename = file.getAbsolutePath();
-                System.out.println("Cheking " + file.getName());
 
+                String filename = file.getAbsolutePath();
+                System.out.println("Checking speed of " + file.getName());
+
+                long startTime = System.nanoTime();
                 BigInteger actualMult = NumberProcessor.mult(filename);
+                long endTime = System.nanoTime();
+                long duration = endTime - startTime;
+
+                System.out.println("Execution time for mult function on " + file.getName() + ": " + duration + " nanoseconds");
+
                 BigInteger expectedMult = (BigInteger) answers.get(file.getName())[3];
                 assertEquals("Mult in " + file.getName() + " must be " + expectedMult, expectedMult, actualMult);
             }
         }
     }
-
-
-    public static Map<String, Object[]> readFileStatistics(String filePath) {
-        Map<String, Object[]> fileStatisticsMap = new HashMap<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(";");
-                if (parts.length == 5) {
-                    String fileName = parts[0];
-                    Object[] parameters = new Object[4];
-                    parameters[0] = Long.parseLong(parts[1]);
-                    parameters[1] = Long.parseLong(parts[2]);
-                    parameters[2] = new BigInteger(parts[3]);
-                    parameters[3] = new BigInteger(parts[4]);
-                    fileStatisticsMap.put(fileName, parameters);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return fileStatisticsMap;
-    }
-
 }

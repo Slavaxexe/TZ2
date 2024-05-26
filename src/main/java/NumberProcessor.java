@@ -3,6 +3,7 @@ package main.java;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
 
 public class NumberProcessor {
 
@@ -51,20 +52,20 @@ public class NumberProcessor {
         return max;
     }
 
-    public static long sum(String filename) throws IOException {
+    public static BigInteger sum(String filename) throws IOException {
         long[] numbers = readNumbersFromFile(filename);
-        long sum = 0;
+        BigInteger sum = BigInteger.valueOf(0);
         for (long num : numbers) {
-            sum += num;
+            sum = sum.add(BigInteger.valueOf(num));
         }
         return sum;
     }
 
-    public static long mult(String filename) throws IOException {
+    public static BigInteger mult(String filename) throws IOException {
         long[] numbers = readNumbersFromFile(filename);
-        long mult = 1;
+        BigInteger mult = BigInteger.valueOf(1);
         for (long num : numbers) {
-            mult *= num;
+            mult = mult.multiply(BigInteger.valueOf(num));
         }
         return mult;
     }
