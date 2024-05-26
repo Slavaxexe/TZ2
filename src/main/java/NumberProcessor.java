@@ -1,20 +1,12 @@
+package main.java;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Main {
+public class NumberProcessor {
 
     public static void main(String[] args) {
-        String filename = "numbers.txt"; // Замените на путь к вашему файлу с числами
-        try {
-            long[] numbers = readNumbersFromFile(filename);
-            System.out.println("Минимальное число: " + min(numbers));
-            System.out.println("Максимальное число: " + max(numbers));
-            System.out.println("Сумма чисел: " + sum(numbers));
-            System.out.println("Произведение чисел: " + mult(numbers));
-        } catch (IOException e) {
-            System.err.println("Ошибка при чтении файла: " + e.getMessage());
-        }
     }
 
     public static long[] readNumbersFromFile(String filename) throws IOException {
@@ -37,7 +29,8 @@ public class Main {
         return numbers;
     }
 
-    public static long min(long[] numbers) {
+    public static long min(String filename) throws IOException {
+        long[] numbers = readNumbersFromFile(filename);
         long min = Long.MAX_VALUE;
         for (long num : numbers) {
             if (num < min) {
@@ -47,7 +40,8 @@ public class Main {
         return min;
     }
 
-    public static long max(long[] numbers) {
+    public static long max(String filename) throws IOException {
+        long[] numbers = readNumbersFromFile(filename);
         long max = Long.MIN_VALUE;
         for (long num : numbers) {
             if (num > max) {
@@ -57,7 +51,8 @@ public class Main {
         return max;
     }
 
-    public static long sum(long[] numbers) {
+    public static long sum(String filename) throws IOException {
+        long[] numbers = readNumbersFromFile(filename);
         long sum = 0;
         for (long num : numbers) {
             sum += num;
@@ -65,7 +60,8 @@ public class Main {
         return sum;
     }
 
-    public static long mult(long[] numbers) {
+    public static long mult(String filename) throws IOException {
+        long[] numbers = readNumbersFromFile(filename);
         long mult = 1;
         for (long num : numbers) {
             mult *= num;
