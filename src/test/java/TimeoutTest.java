@@ -10,6 +10,7 @@ import java.time.Duration;
 
 
 public class TimeoutTest {
+
     @Test
     public void testMinTimeout() throws IOException {
         String directoryPath = "testfiles/";
