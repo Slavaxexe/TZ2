@@ -24,5 +24,11 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Run tests
-        run: mvn test
+      - name: Run MathTest
+        run: mvn -Dtest=MathTest test   
+        
+      - name: Run SpeedTest
+        run: mvn -Dtest=SpeedTest test
+        
+      - name: Run TimeoutTest
+        run: mvn -Dtest=TimeoutTest test
