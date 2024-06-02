@@ -1,4 +1,4 @@
-# main.java.NumberProcessor
+# NumberProcessor
 
 Простая программа на Java для обработки чисел из файла.
 
