@@ -32,41 +32,53 @@ public class NumberProcessor {
 
     public static long min(String filename) throws IOException {
         long[] numbers = readNumbersFromFile(filename);
+        long start = System.nanoTime();
         long min = Long.MAX_VALUE;
         for (long num : numbers) {
             if (num < min) {
                 min = num;
             }
         }
+        long end = System.nanoTime();
+        System.out.println("Time execution: " + (end - start));
         return min;
     }
 
     public static long max(String filename) throws IOException {
         long[] numbers = readNumbersFromFile(filename);
+        long start = System.nanoTime();
         long max = Long.MIN_VALUE;
         for (long num : numbers) {
             if (num > max) {
                 max = num;
             }
         }
+        long end = System.nanoTime();
+        System.out.println("Time execution: " + (end - start));
         return max;
     }
 
     public static BigInteger sum(String filename) throws IOException {
         long[] numbers = readNumbersFromFile(filename);
+        long start = System.nanoTime();
         BigInteger sum = BigInteger.valueOf(0);
         for (long num : numbers) {
             sum = sum.add(BigInteger.valueOf(num));
         }
+        long end = System.nanoTime();
+        System.out.println("Time execution: " + (end - start));
         return sum;
     }
 
     public static BigInteger mult(String filename) throws IOException {
         long[] numbers = readNumbersFromFile(filename);
+        long start = System.nanoTime();
         BigInteger mult = BigInteger.valueOf(1);
         for (long num : numbers) {
             mult = mult.multiply(BigInteger.valueOf(num));
         }
+        long end = System.nanoTime();
+        System.out.println("Time execution: " + (end - start));
         return mult;
     }
 }
