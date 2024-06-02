@@ -10,13 +10,13 @@ import java.math.BigInteger;
 import java.util.Map;
 
 
-public class SpeedTest {
+public class SpeedTests {
     @Test
     public void testMinPerformance() throws IOException {
         String directoryPath = "testfiles/";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles((dir, name) -> name.endsWith(".txt"));
-        Map<String, Object[]> answers = MathTest.readFileStatistics("testfiles/statistics.txt");
+        Map<String, Object[]> answers = MathTests.readFileStatistics("testfiles/statistics.txt");
 
         if (files != null) {
             for (File file : files) {
@@ -42,7 +42,7 @@ public class SpeedTest {
         String directoryPath = "testfiles/";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles((dir, name) -> name.endsWith(".txt"));
-        Map<String, Object[]> answers = MathTest.readFileStatistics("testfiles/statistics.txt");
+        Map<String, Object[]> answers = MathTests.readFileStatistics("testfiles/statistics.txt");
         if (files != null) {
             for (File file : files) {
                 if (file.getName().equals("statistics.txt")) continue;
@@ -68,7 +68,7 @@ public class SpeedTest {
         String directoryPath = "testfiles/";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles((dir, name) -> name.endsWith(".txt"));
-        Map<String, Object[]> answers = MathTest.readFileStatistics("testfiles/statistics.txt");
+        Map<String, Object[]> answers = MathTests.readFileStatistics("testfiles/statistics.txt");
 
         if (files != null) {
             for (File file : files) {
@@ -95,7 +95,7 @@ public class SpeedTest {
         String directoryPath = "testfiles/";
         File directory = new File(directoryPath);
         File[] files = directory.listFiles((dir, name) -> name.endsWith(".txt"));
-        Map<String, Object[]> answers = MathTest.readFileStatistics("testfiles/statistics.txt");
+        Map<String, Object[]> answers = MathTests.readFileStatistics("testfiles/statistics.txt");
 
         if (files != null) {
             for (File file : files) {

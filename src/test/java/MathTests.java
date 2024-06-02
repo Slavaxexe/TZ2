@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class MathTest {
+public class MathTests {
 
     @Test
     public void testMin() throws IOException {

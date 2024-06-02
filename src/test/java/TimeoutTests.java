@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.time.Duration;
 
 
-public class TimeoutTest {
+public class TimeoutTests {
 
     @Test
     public void testMinTimeout() throws IOException {
