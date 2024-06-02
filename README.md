@@ -1,3 +1,4 @@
+[![Java CI](https://github.com/Slavaxexe/TZ2/actions/workflows/build.yml/badge.svg)](https://github.com/Slavaxexe/TZ2/actions/workflows/build.yml)
 # NumberProcessor
 
 Простая программа на Java для обработки чисел из файла.
