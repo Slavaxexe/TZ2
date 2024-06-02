@@ -15,14 +15,8 @@ public class TestGenerator {
     private static final String STATISTICS_FILE = DIRECTORY + "statistics.txt";
 
     public static void main(String[] args) {
-        int numberOfFiles = 5; // количество генерируемых файлов
-        int numbersPerFile = 15; // количество генерируемых чисел в каждом файле
-        int bound = 100;
         createDirectory(DIRECTORY);
-        generateFiles(numberOfFiles, numbersPerFile, bound);
-        generateFiles(numberOfFiles, 100, bound);
-        generateFiles(numberOfFiles, 1000, bound);
-        generateFiles(numberOfFiles, 10000, 10);
+        generateFiles(1, 100000, 100);
     }
 
     private static void createDirectory(String directory) {
