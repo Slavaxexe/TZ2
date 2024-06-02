@@ -3,6 +3,7 @@ package main.java;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Random;
@@ -14,11 +15,14 @@ public class TestGenerator {
     private static final String STATISTICS_FILE = DIRECTORY + "statistics.txt";
 
     public static void main(String[] args) {
-        int numberOfFiles = 10; // количество генерируемых файлов
+        int numberOfFiles = 5; // количество генерируемых файлов
         int numbersPerFile = 15; // количество генерируемых чисел в каждом файле
         int bound = 100;
         createDirectory(DIRECTORY);
         generateFiles(numberOfFiles, numbersPerFile, bound);
+        generateFiles(numberOfFiles, 100, bound);
+        generateFiles(numberOfFiles, 1000, bound);
+        generateFiles(numberOfFiles, 10000, 10);
     }
 
     private static void createDirectory(String directory) {
@@ -59,8 +63,8 @@ public class TestGenerator {
     private static void writeStatisticsToFile(int[] numbers, String fileName) {
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
-        long sum = 0;
-        long product = 1;
+        BigInteger sum = BigInteger.valueOf(0);
+        BigInteger product = BigInteger.valueOf(1);
 
         for (int number : numbers) {
             if (number < min) {
@@ -69,8 +73,8 @@ public class TestGenerator {
             if (number > max) {
                 max = number;
             }
-            sum += number;
-            product *= number;
+            sum = sum.add(BigInteger.valueOf(number));
+            product = product.multiply(BigInteger.valueOf(number));
         }
         File f = new File(fileName);
         String statistics = String.format("%s;%d;%d;%d;%d%n", f.getName(), min, max, sum, product);

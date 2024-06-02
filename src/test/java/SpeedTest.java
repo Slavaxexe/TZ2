@@ -1,17 +1,14 @@
 package test.java;
 
 import main.java.NumberProcessor;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Map;
-import java.util.Objects;
-import java.util.function.BiFunction;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class SpeedTest {
     @Test
@@ -36,7 +33,7 @@ public class SpeedTest {
                 System.out.println("Execution time for min function on " + file.getName() + ": " + duration + " nanoseconds");
 
                 long expectedMin = (long) answers.get(file.getName())[0];
-                assertEquals("Min in " + file.getName() + " must be " + expectedMin, expectedMin, actualMin);
+                Assertions.assertEquals(expectedMin, actualMin);
             }
         }
     }
@@ -61,7 +58,7 @@ public class SpeedTest {
                 System.out.println("Execution time for max function on " + file.getName() + ": " + duration + " nanoseconds");
 
                 long expectedMax = (long) answers.get(file.getName())[1];
-                assertEquals("Max in " + file.getName() + " must be " + expectedMax, expectedMax, actualMax);
+                Assertions.assertEquals(expectedMax, actualMax);
             }
         }
     }
@@ -88,7 +85,7 @@ public class SpeedTest {
                 System.out.println("Execution time for sum function on " + file.getName() + ": " + duration + " nanoseconds");
 
                 BigInteger expectedSum = (BigInteger) answers.get(file.getName())[2];
-                assertEquals("Sum in " + file.getName() + " must be " + expectedSum, expectedSum, actualSum);
+                Assertions.assertEquals(expectedSum, actualSum);
             }
         }
     }
@@ -115,7 +112,7 @@ public class SpeedTest {
                 System.out.println("Execution time for mult function on " + file.getName() + ": " + duration + " nanoseconds");
 
                 BigInteger expectedMult = (BigInteger) answers.get(file.getName())[3];
-                assertEquals("Mult in " + file.getName() + " must be " + expectedMult, expectedMult, actualMult);
+                Assertions.assertEquals(expectedMult, actualMult);
             }
         }
     }

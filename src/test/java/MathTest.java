@@ -1,7 +1,8 @@
 package test.java;
 
 import main.java.NumberProcessor;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,7 +12,6 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
 
 public class MathTest {
 
@@ -29,7 +29,7 @@ public class MathTest {
 
                 long actualMin = NumberProcessor.min(filename);
                 long expectedMin = (long) answers.get(file.getName())[0];
-                assertEquals("Min in " + file.getName() + " must be " + expectedMin, expectedMin, actualMin);
+                Assertions.assertEquals(expectedMin, actualMin);
             }
         }
     }
@@ -48,7 +48,7 @@ public class MathTest {
 
                 long actualMax = NumberProcessor.max(filename);
                 long expectedMax = (long) answers.get(file.getName())[1];
-                assertEquals("Max in " + file.getName() + " must be " + expectedMax, expectedMax, actualMax);
+                Assertions.assertEquals(expectedMax, actualMax);
             }
         }
     }
@@ -67,7 +67,7 @@ public class MathTest {
 
                 BigInteger actualSum = NumberProcessor.sum(filename);
                 BigInteger expectedSum = (BigInteger) answers.get(file.getName())[2];
-                assertEquals("Sum in " + file.getName() + " must be " + expectedSum, expectedSum, actualSum);
+                Assertions.assertEquals(expectedSum, actualSum);
             }
         }
     }
@@ -86,7 +86,7 @@ public class MathTest {
 
                 BigInteger actualMult = NumberProcessor.mult(filename);
                 BigInteger expectedMult = (BigInteger) answers.get(file.getName())[3];
-                assertEquals("Mult in " + file.getName() + " must be " + expectedMult, expectedMult, actualMult);
+                Assertions.assertEquals(expectedMult, actualMult);
             }
         }
     }
