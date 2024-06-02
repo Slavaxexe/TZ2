@@ -25,3 +25,4 @@
     <figcaption>Скорость mult функции</figcaption>
     <img src="charts/mult.png" title="Скорость mult функци">
 </figure>
+
